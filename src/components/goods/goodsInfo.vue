@@ -6,8 +6,6 @@
       @after-enter="afterEnter">
       <div class="ball" v-show="flag" ref="ball"></div>
     </transition>
-    <!-- <div class="ball" v-show="flag"></div> -->
-        
         <!-- 商品轮播区 -->
         <div class="mui-card">
             <div class="mui-card-content">
@@ -21,13 +19,12 @@
             <div class="mui-card-header">{{detailInfo.title}}</div>
             <div class="mui-card-content">
                 <div class="mui-card-content-inner">
-                    <p>
-                        市场价:<del>￥{{detailInfo.market_price}}</del>&nbsp;&nbsp;销售价:<span class="now-price">￥{{detailInfo.sell_price}}</span>
+                    <p>市场价:<del>￥{{detailInfo.market_price}}</del>&nbsp;&nbsp;销售价:<span class="now-price">￥{{detailInfo.sell_price}}</span>
                     </p>
-                    <p>购买数量：<goodsinfonum></goodsinfonum></p>
-                    <p>
-                    <mt-button type="primary" size="small">立即购买</mt-button>
-                    <mt-button type="danger" size="small" @click="addCar">加入购物车</mt-button>
+                    <p>购买数量：<goodsinfonum @getcount="getSelectedCount" :max="detailInfo.stock_quantity"></goodsinfonum></p>
+                    <p><mt-button style="float:left"  type="primary" size="small">立即购买</mt-button>
+                    <mt-button style="float:left" type="danger" size="small" @click="addCar" ref="shopcar1" :disabled="tag">加入购物车</mt-button>
+                    <mt-button style="float:left;display:none" type="danger" size="small" ref="shopcar2" :disabled="tag">加入购物车</mt-button>
                     </p>
                 </div>
             </div>
@@ -60,7 +57,10 @@ export default{
             id:this.$route.params.id,
             lunbotu:[],
             detailInfo:[],
-            flag:false
+            flag:false,
+            selectedCount:1,
+            tag:false,
+            ct:null
         }
     },
     created(){
@@ -83,7 +83,6 @@ export default{
         getGoodsDetail(){
             this.$http.get("http://027xin.com:8899/api/goods/getinfo/" + this.id).then(result=>{
                 if(result.body.status ===0){
-                    console.log(result.body.message)
                     this.detailInfo=result.body.message[0]
                     console.log(this.detailInfo)
                 }
@@ -97,12 +96,30 @@ export default{
             this.$router.push({name:"goodscomment",params:{id}})
         },
         addCar(){
+            var btn = this.$refs.shopcar1.$el;
+            var btn2 = this.$refs.shopcar2.$el;
+            btn.style.border = "1px solid red"
+            btn.style.display = "none"
+            btn2.style.display = "block"
+            
+            this.ct = setTimeout(function(){
+                btn.style.display = "block";
+                btn2.style.display = "none"
+            },1000)
+            
             this.flag=!this.flag
-            console.log('add')
+            //获取到点击的按钮让其禁用
+            this.tag = true
+            var goodsinfo = {
+                id: this.id,
+                count: this.selectedCount,
+                price: this.detailInfo.sell_price,
+                selected: true
+            }
+            this.$store.commit('addToCar',goodsinfo)
         },
         beforeEnter(el){
             el.style.transform = "translate(0, 0)"
-            console.log(1)
         },
         enter(el,done){
             el.offsetWidth // 强制让页面重绘
@@ -113,12 +130,18 @@ export default{
             const x =badgePosit.left - ballPosit.left;
             const y =badgePosit.top - ballPosit.top;
             el.style.transform = `translate(${x}px,${y}px)`
-            el.style.transition="all 0.5s cubic-bezier(.4,-0.3,.1,.68)"
+            el.style.transition="all 1s cubic-bezier(.4,-0.3,.1,.68)"
             done()
         },
         afterEnter(el){
-        
             this.flag = !this.flag
+            this.tag = false
+            console.log(123123)
+        },
+        getSelectedCount(count) {
+        // 当子组件把 选中的数量传递给父组件的时候，把选中的值保存到 data 上
+        this.selectedCount = count;
+        console.log("父组件拿到的数量值为： " + this.selectedCount);
         }
     },
     components:{
@@ -129,9 +152,6 @@ export default{
 </script>
 
 <style scoped>
-.goodsinfo-container{
-    /* position: relative; */
-}
 .goodsinfo-container .now-price{
     color:red;
     font-size: 16px;
@@ -152,7 +172,6 @@ export default{
     z-index:99;
     left: 150px;
     top: 409px;
-    /* transform: translate(89px,400px) */
 }
 </style>
   

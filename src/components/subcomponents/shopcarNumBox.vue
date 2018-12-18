@@ -1,6 +1,6 @@
 <template>
    
-        <div class="mui-numbox" data-numbox-min='1' >
+        <div class="mui-numbox" data-numbox-min='1' style="height:25px">
             <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
             <input id="test" class="mui-input-numbox" type="number"  @change="countChanged" ref="count" />
             <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
@@ -21,19 +21,7 @@ export default{
     },
     methods:{
          countChanged() {
-        // 每当 文本框的数据被修改的时候，立即把 最新的数据，通过事件调用，传递给父组件
-        // console.log(this.$refs.numbox.value);
-        this.$emit("getcount", parseInt(this.$refs.count.value));
-        }
-    },
-    props:['max'],
-    watch: {
-    // 属性监听
-    max: function(newVal, oldVal) {
-        // 使用 JS API 设置 numbox 的最大值
-        mui(".mui-numbox")
-        .numbox()
-        .setOption("max", newVal);
+       
         }
     }
 }

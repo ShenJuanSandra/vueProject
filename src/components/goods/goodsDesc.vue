@@ -42,7 +42,7 @@ export default{
 }
 .goodsInfoDesc .content img{
     width:100%;
-    display: block;
+    vertical-align: top;
 }
 .goodsInfoDesc .content p{
     margin: 0;
