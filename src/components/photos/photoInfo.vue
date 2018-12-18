@@ -16,7 +16,7 @@
         <vue-preview class="preview-img" height="100" :slides="slide1"></vue-preview>
     </div>
     
-    
+    <h3>嘻嘻嘻嘻</h3>
     <!-- 放置一个现成的 评论子组件 -->
     <cmt-box :id="id"></cmt-box>
 </div>
