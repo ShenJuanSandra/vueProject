@@ -11,7 +11,7 @@
             <p class="sell">
             <span>热卖中</span>
             <span>剩{{item.stock_quantity}}件</span>
-            <span>呃呃呃呃呃呃呃呃</span>
+            <span>呃呃2222呃呃呃呃</span>
             </p>
         </div>
     </router-link>
