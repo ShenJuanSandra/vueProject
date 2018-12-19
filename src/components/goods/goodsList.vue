@@ -65,6 +65,17 @@ export default {
     justify-content: space-between;
     min-height: 293px;
 }
+.goods-list .goods-item{
+    width: 49%;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 8px #ccc;
+    margin: 4px 0;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 293px;
+}
 .goods-list img{
     width: 100%;
 }
