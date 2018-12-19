@@ -12,7 +12,7 @@
             <span>热卖中</span>
             <span>剩{{item.stock_quantity}}件</span>
             <span>呃呃呃呃呃876呃呃呃</span>
-            <span>嗡嗡嗡嗡嗡876嗡</span>
+            <span>嗡嗡hahahahahahh</span>
             </p>
         </div>
     </router-link>
