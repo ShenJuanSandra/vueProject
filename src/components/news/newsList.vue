@@ -9,6 +9,7 @@
                 <p class="mui-ellipsis">
                     <span>发表时间：{{item.add_time | dataFormat}}</span>
                     <span>点击次数：{{item.click}}次</span>
+                    <span>嗡嗡嗡嗡嗡嗡</span>
                 </p>
             </div>
         </router-link>

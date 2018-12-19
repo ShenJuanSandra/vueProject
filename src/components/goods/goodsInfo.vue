@@ -14,6 +14,13 @@
                 </div>
             </div>
         </div>
+         <div class="mui-card">
+            <div class="mui-card-content">
+                <div class="mui-card-content-inner">
+                    <swiper :imageList="lunbotu" :isfull="false"></swiper>
+                </div>
+            </div>
+        </div>
         <!-- 商品购买区 -->
         <div class="mui-card">
             <div class="mui-card-header">{{detailInfo.title}}</div>

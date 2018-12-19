@@ -8,6 +8,8 @@
     <span>点击：{{newsInfo.click}}</span>
     </p>
     <hr>
+    <h3>111111</h3>
+    <h4>222222</h4>
     <!-- 内容区域 -->
     <div class="content" v-html="newsInfo.content"></div>
     <!-- 评论区域 -->
