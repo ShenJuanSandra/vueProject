@@ -11,8 +11,8 @@
             <p class="sell">
             <span>热卖中</span>
             <span>剩{{item.stock_quantity}}件</span>
-            <span>呃呃呃呃呃呃呃呃</span>
-            <span>嗡嗡嗡嗡嗡嗡</span>
+            <span>呃呃呃呃呃876呃呃呃</span>
+            <span>嗡嗡嗡嗡嗡876嗡</span>
             </p>
         </div>
     </router-link>
@@ -53,17 +53,6 @@ export default {
   flex-wrap: wrap;
   padding: 7px;
   justify-content: space-between;
-}
-.goods-list .goods-item{
-    width: 49%;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 8px #ccc;
-    margin: 4px 0;
-    padding: 2px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 293px;
 }
 .goods-list .goods-item{
     width: 49%;
