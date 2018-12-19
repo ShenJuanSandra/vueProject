@@ -13,7 +13,7 @@
             <span>剩{{item.stock_quantity}}件</span>
             <span>呃呃呃呃呃876呃呃呃</span>
             <span>嗡嗡hahahahahahh</span>
-            <span>dev分支</span>
+            <span>dev分支<i>dev2分支</i></span>
             <span>3</span>
             </p>
         </div>
